@@ -14,4 +14,10 @@ public class HomeController {
         return "index";
     }
 
+    @RequestMapping(value = "/hellopage",method = RequestMethod.GET)
+    public String hello(){
+        return "hellopage";
+    }
+
+
 }

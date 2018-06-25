@@ -13,6 +13,7 @@
 
     <mvc:annotation-driven />
     <mvc:resources mapping="/resources/**" location="/resources/" />
+    <mvc:resources mapping="/static/**" location="/static/" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
@@ -20,5 +21,7 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
+    <bean id = "multipartResolver"
+          class = "org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 </beans>
         <!--WebApplicationContext:Mapping Specific folder and file-->
