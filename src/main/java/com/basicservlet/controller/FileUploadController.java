@@ -1,8 +1,10 @@
 package com.basicservlet.controller;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.Assert;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -39,11 +41,18 @@ public class FileUploadController {
             System.out.println("Fetching file");
             MultipartFile multipartFile = file.getFile();
             //String uploadPath = context.getRealPath("") + File.separator + "temp" + File.separator;
-            String uploadPath = "D:\\rdbbank\\projects\\basicservlet\\src\\main\\webapp\\WEB-INF\\images\\";
+            String uploadPath = "D:\\home\\jee\\prepare-sharing\\springmvc-upload-correct\\src\\main\\webapp\\WEB-INF\\images\\";
             //Now do something with file...
-            FileCopyUtils.copy(file.getFile().getBytes(), new File(uploadPath+file.getFile().getOriginalFilename()));
             String fileName = multipartFile.getOriginalFilename();
+            File fileRead = new File("D:\\home\\jee\\prepare-sharing\\springmvc-upload-correct\\src\\main\\webapp\\WEB-INF\\images\\"+fileName);
+            if (fileRead != null) {
+                System.out.println("Equal!");
+            }
+            FileCopyUtils.copy(file.getFile().getBytes(), new File(uploadPath+file.getFile().getOriginalFilename()));
+
             model.addAttribute("fileName", fileName);
+
+
             return "success";
         }
     }
