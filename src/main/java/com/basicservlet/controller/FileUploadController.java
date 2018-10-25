@@ -45,7 +45,7 @@ public class FileUploadController {
             //Now do something with file...
             String fileName = multipartFile.getOriginalFilename();
             File fileRead = new File("D:\\home\\jee\\prepare-sharing\\springmvc-upload-correct\\src\\main\\webapp\\WEB-INF\\images\\"+fileName);
-            if (fileRead != null) {
+            if (fileRead.exists() == true) {
                 System.out.println("Equal!");
             }
             FileCopyUtils.copy(file.getFile().getBytes(), new File(uploadPath+file.getFile().getOriginalFilename()));
